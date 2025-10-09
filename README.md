@@ -4,11 +4,13 @@ This project is a C++ implementation of the TWAMP Light protocol defined in Appe
 * TWAMP Light Controller/Sender
 * TWAMP Light Responder/Reflector
 ## Installation
-`git clone https://github.com/gokulr2809/TWAMP-Light.git`
-`mkdir build`
-`cd build`
-`cmake ..`
-`make`
+```
+git clone https://github.com/gokulr2809/twamp-light.git
+mkdir build
+cd build
+cmake ..
+make
+```
 ## Usage
 TBD
 ## Example Output
