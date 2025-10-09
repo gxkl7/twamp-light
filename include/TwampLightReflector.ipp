@@ -1,11 +1,3 @@
-#include <sys/socket.h>
-#include <arpa/inet.h>
-#include <netinet/in.h>
-#include <unistd.h>
-#include <iostream>
-#include <cstring>
-#include <chrono>
-
 //constructor
 TwampLightReflector::TwampLightReflector(std::string ip, uint16_t port): ipaddr(ip), listen_port(port){
     sockfd = socket(AF_INET, SOCK_DGRAM, 0);

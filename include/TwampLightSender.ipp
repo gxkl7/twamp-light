@@ -1,13 +1,4 @@
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <unistd.h>
-#include <iostream>
-#include <chrono>
-#include <thread>
-#include <cstring>
-#include <random>
-
+//constructor
 TwampLightSender::TwampLightSender(const std::string& ip, uint16_t port): reflector_ip(ip), reflector_port(port) {
     sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if (sockfd < 0) {
