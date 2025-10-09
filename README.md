@@ -12,6 +12,26 @@ cmake ..
 make
 ```
 ## Usage
-TBD
+```
+$ ./twamp_light --help
+
+usage:
+
+        IPv4 Address (Required)
+
+        Port Number (Required)
+
+        -f Controller || Reflector (Required)
+
+        -c packet_count (Controller mode only)
+
+        -d interval_ms (Controller mode only)
+
+        -t timeout_ms (Controller mode only)
+
+-h, --help Help string
+
+defaults: packet_count=3, interval=10ms, timeout=1000ms
+```
 ## Example Output
 TBD
