@@ -1,6 +1,7 @@
 #pragma once
 #include <cstdint>
 #include <vector>
+#include <iostream>
 
 #if (defined(__APPLE__))
     #include <libkern/OSByteOrder.h>
