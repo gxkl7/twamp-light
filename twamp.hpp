@@ -17,7 +17,7 @@ uint64_t get_current_time_ns(){
     (std::chrono::high_resolution_clock::now().time_since_epoch()).count();
 }
 
-class TwampLitePacket{
+class TwampLightPacket{
     public:
     //packet contents
     uint32_t sequence_number;
@@ -26,14 +26,14 @@ class TwampLitePacket{
     //function to serialize the packet data into byte stream
     std::vector<uint8_t> serialize() const;
     //function to deserialize
-    static TwampLitePacket deserialize(const uint8_t* data, size_t length);
+    static TwampLightPacket deserialize(const uint8_t* data, size_t length);
     //constructor
-    TwampLitePacket(uint32_t seq = 0, uint64_t sender_ts = 0, uint64_t receiver_ts = 0);
+    TwampLightPacket(uint32_t seq = 0, uint64_t sender_ts = 0, uint64_t receiver_ts = 0);
 };
 
-class TwampLiteReflector{
+class TwampLightReflector{
     public:
-    TwampLiteReflector(std::string ip, uint16_t port);
+    TwampLightReflector(std::string ip, uint16_t port);
     void run();
 
     private:
@@ -42,9 +42,9 @@ class TwampLiteReflector{
     std::string ipaddr;
 };
 
-class TwampLiteSender{
+class TwampLightSender{
     public:
-    TwampLiteSender(const std::string& reflector_ip, uint16_t reflector_port);
+    TwampLightSender(const std::string& reflector_ip, uint16_t reflector_port);
     void run(int num_packets, int interval_ms, int timeout_interval_ms);
 
     private:
@@ -53,6 +53,6 @@ class TwampLiteSender{
     int sockfd;
 };
 
-#include "TwampLitePacket.ipp"
-#include "TwampLiteReflector.ipp"
-#include "TwampLiteSender.ipp"
+#include "TwampLightPacket.ipp"
+#include "TwampLightReflector.ipp"
+#include "TwampLightSender.ipp"
