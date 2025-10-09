@@ -1,0 +1,58 @@
+#pragma once
+#include <cstdint>
+#include <vector>
+
+#if (defined(__APPLE__))
+    #include <libkern/OSByteOrder.h>
+    #define htobe64(x) OSSwapHostToBigInt64(x)
+    #define be64toh(x) OSSwapBigToHostInt64(x)
+    #define htobe32(x) OSSwapHostToBigInt32(x)
+    #define be64t32(x) OSSwapBigToHostInt32(x)
+#elif (defined(__linux__))
+    #include <endian.h>
+#endif
+
+uint64_t get_current_time_ns(){
+    return std::chrono::duration_cast<std::chrono::nanoseconds>
+    (std::chrono::high_resolution_clock::now().time_since_epoch()).count();
+}
+
+class TwampLitePacket{
+    public:
+    //packet contents
+    uint32_t sequence_number;
+    uint64_t sender_timestamp;
+    uint64_t receiver_timestamp;
+    //function to serialize the packet data into byte stream
+    std::vector<uint8_t> serialize() const;
+    //function to deserialize
+    static TwampLitePacket deserialize(const uint8_t* data, size_t length);
+    //constructor
+    TwampLitePacket(uint32_t seq = 0, uint64_t sender_ts = 0, uint64_t receiver_ts = 0);
+};
+
+class TwampLiteReflector{
+    public:
+    TwampLiteReflector(std::string ip, uint16_t port);
+    void run();
+
+    private:
+    uint16_t listen_port;
+    int sockfd;
+    std::string ipaddr;
+};
+
+class TwampLiteSender{
+    public:
+    TwampLiteSender(const std::string& reflector_ip, uint16_t reflector_port);
+    void run(int num_packets, int interval_ms, int timeout_interval_ms);
+
+    private:
+    std::string reflector_ip;
+    uint16_t reflector_port;
+    int sockfd;
+};
+
+#include "TwampLitePacket.ipp"
+#include "TwampLiteReflector.ipp"
+#include "TwampLiteSender.ipp"
