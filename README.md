@@ -5,7 +5,7 @@ This project is a C++ implementation of the TWAMP Light protocol defined in Appe
 * TWAMP Light Responder/Reflector
 ## Installation
 ```
-git clone https://github.com/gokulr2809/twamp-light.git
+git clone https://github.com/gxkl7/twamp-light.git
 mkdir build
 cd build
 cmake ..
