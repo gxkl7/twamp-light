@@ -21,11 +21,11 @@ usage:
 
         Port Number (Required)
 
-        -f Controller || Reflector (Required)
+        -f controller || reflector (Required)
 
         -c packet_count (Controller mode only)
 
-        -d interval_ms (Controller mode only)
+        -i interval_ms (Controller mode only)
 
         -t timeout_ms (Controller mode only)
 
