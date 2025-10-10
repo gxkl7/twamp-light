@@ -4,12 +4,16 @@
 #include <unistd.h>
 #include <vector>
 #include <string>
+#include <unordered_map>
 #include <chrono>
 #include <random>
 #include <thread>
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netinet/in.h>
+#include <ctime>
+#include <iomanip>
+#include <sstream>
 
 #if (defined(__APPLE__))
     #include <libkern/OSByteOrder.h>
@@ -24,6 +28,15 @@
 uint64_t get_current_time_ns(){
     return std::chrono::duration_cast<std::chrono::nanoseconds>
     (std::chrono::high_resolution_clock::now().time_since_epoch()).count();
+}
+
+std::string get_current_timestamp() {
+    auto now = std::chrono::system_clock::now();
+    std::time_t now_c = std::chrono::system_clock::to_time_t(now);
+    std::tm local_tm = *std::localtime(&now_c);
+    std::ostringstream oss;
+    oss << std::put_time(&local_tm, "%F %T");
+    return oss.str();
 }
 
 class TwampLightPacket{
@@ -54,7 +67,7 @@ class TwampLightReflector{
 class TwampLightSender{
     public:
     TwampLightSender(const std::string& reflector_ip, uint16_t reflector_port);
-    void run(int num_packets, int interval_ms, int timeout_interval_ms);
+    std::unordered_map<std::string, double> run(int num_packets, int interval_ms, int timeout_interval_ms);
 
     private:
     std::string reflector_ip;
