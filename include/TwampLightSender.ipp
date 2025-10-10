@@ -27,7 +27,7 @@ std::unordered_map<std::string, double> TwampLightSender::run(int num_packets = 
         inet_ntop(AF_INET, &(reflector_addr.sin_addr), dip_str, INET_ADDRSTRLEN);
         ssize_t sent = sendto(sockfd, buffer.data(), buffer.size(), 0, (sockaddr*)&reflector_addr, sizeof(reflector_addr));
         if (sent < 0) {
-            std::cout << get_current_timestamp() <<"Error Sending " << dip_str << "\n" << std::endl;
+            std::cout << get_current_timestamp() <<" Error Sending " << dip_str << "\n" << std::endl;
             continue;
         }
         std::cout << get_current_timestamp() << " Packet sent to " << dip_str << std::endl;
@@ -52,7 +52,7 @@ std::unordered_map<std::string, double> TwampLightSender::run(int num_packets = 
             }
         }
         if (len < 20) {
-            std::cout << get_current_timestamp() << "Malformed TWAMP packet: undersized (received " << len << " bytes, expected 20) from " << dip_str << "\n"  << std::endl;
+            std::cout << get_current_timestamp() << " Malformed TWAMP packet: undersized (received " << len << " bytes, expected 20) from " << dip_str << "\n"  << std::endl;
             // Handle as malformed packet (increment malformed counter, log, etc.)
             continue;
         }
