@@ -23,11 +23,11 @@ usage:
 
         -f controller || reflector (Required)
 
-        -c packet_count (Controller mode only)
+        -c packet_count (controller mode only)
 
-        -i interval_ms (Controller mode only)
+        -i interval_ms (controller mode only)
 
-        -t timeout_ms (Controller mode only)
+        -t timeout_ms (controller mode only)
 
 -h, --help Help string
 
