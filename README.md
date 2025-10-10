@@ -5,7 +5,7 @@ This project is a C++ implementation of the TWAMP Light protocol defined in Appe
 * TWAMP Light Responder/Reflector
 ## Installation
 ```
-git clone https://github.com/gokulr2809/twamp-light.git
+git clone https://github.com/gxkl7/twamp-light.git
 mkdir build
 cd build
 cmake ..
@@ -23,11 +23,11 @@ usage:
 
         -f controller || reflector (Required)
 
-        -c packet_count (Controller mode only)
+        -c packet_count (controller mode only)
 
-        -i interval_ms (Controller mode only)
+        -i interval_ms (controller mode only)
 
-        -t timeout_ms (Controller mode only)
+        -t timeout_ms (controller mode only)
 
 -h, --help Help string
 
