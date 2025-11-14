@@ -1,3 +1,5 @@
+#include "twamp_light.hpp"
+
 //constructor
 TwampLightSender::TwampLightSender(const std::string& ip, uint16_t port): reflector_ip(ip), reflector_port(port) {
     sockfd = socket(AF_INET, SOCK_DGRAM, 0);

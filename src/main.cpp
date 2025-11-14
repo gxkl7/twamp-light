@@ -1,4 +1,4 @@
-#include "TwampLight.hpp"
+#include "twamp_light.hpp"
 
 void print_usage() {
     std::cout << "\nusage:\n\n";

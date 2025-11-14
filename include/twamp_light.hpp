@@ -25,12 +25,12 @@
     #include <endian.h>
 #endif
 
-uint64_t get_current_time_ns(){
+inline uint64_t get_current_time_ns(){
     return std::chrono::duration_cast<std::chrono::nanoseconds>
     (std::chrono::high_resolution_clock::now().time_since_epoch()).count();
 }
 
-std::string get_current_timestamp() {
+inline std::string get_current_timestamp() {
     auto now = std::chrono::system_clock::now();
     std::time_t now_c = std::chrono::system_clock::to_time_t(now);
     std::tm local_tm = *std::localtime(&now_c);
@@ -74,7 +74,3 @@ class TwampLightSender{
     uint16_t reflector_port;
     int sockfd;
 };
-
-#include "TwampLightPacket.ipp"
-#include "TwampLightReflector.ipp"
-#include "TwampLightSender.ipp"

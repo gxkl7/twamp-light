@@ -1,3 +1,5 @@
+#include "twamp_light.hpp"
+
 //constructor definiton
 TwampLightPacket::TwampLightPacket(uint32_t seq, uint64_t sender_ts, uint64_t receiver_ts)
 {
